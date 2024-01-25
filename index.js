@@ -1,4 +1,5 @@
 const express = require('express')
+const methodOverride = require('method-override')
 
 require('dotenv').config()
 const PORT = process.env.PORT
@@ -16,13 +17,14 @@ app.get('/', (req, res) => {
 //Middleware
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
+app.use(methodOverride('_method'))
 
 const breadsController = require('./controllers/breads_controllers')
 app.use('/breads', breadsController)
 
 //404
 app.get('*', (req, res) => {
-    res.send('404')
+    res.status(404).send('404')
 })
 
 app.listen(PORT, () => {
