@@ -13,6 +13,9 @@ app.get('/', (req, res) => {
     res.send('Welcome to an awesome app about Breads')
 })
 
+//Middleware
+app.use(express.static('public'))
+
 const breadsController = require('./controllers/breads_controllers')
 app.use('/breads', breadsController)
 
