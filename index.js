@@ -19,6 +19,11 @@ app.use(express.static('public'))
 const breadsController = require('./controllers/breads_controllers')
 app.use('/breads', breadsController)
 
+//404
+app.get('*', (req, res) => {
+    res.send('404')
+})
+
 app.listen(PORT, () => {
     console.log('listening on port ' + PORT)
 })
