@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 
 //Middleware
 app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}))
 
 const breadsController = require('./controllers/breads_controllers')
 app.use('/breads', breadsController)
