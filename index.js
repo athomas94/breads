@@ -27,6 +27,9 @@ mongoose.connect(process.env.MONGO_URI).then(() => console.log('connected to mon
 const breadsController = require('./controllers/breads_controllers')
 app.use('/breads', breadsController)
 
+const bakersController = require('./controllers/bakers_controller')
+app.use('/bakers', bakersController)
+
 //404
 app.get('*', (req, res) => {
     res.status(404).send('404')
